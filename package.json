@@ -2,6 +2,7 @@
 	"name": "emailjs",
 	"description": "send text/html emails and attachments (files, streams and strings) from node.js to any smtp server",
 	"version": "4.0.0",
+	"license": "MIT",
 	"author": "eleith",
 	"contributors": [
 		"izuzak",
@@ -15,6 +16,23 @@
 		"url": "http://github.com/eleith/emailjs.git"
 	},
 	"type": "module",
+	"types": "./email.ts",
+	"exports": "./email.js",
+	"engines": {
+		"node": ">=12"
+	},
+	"files": [
+		"email.js",
+		"email.ts",
+		"smtp"
+	],
+	"scripts": {
+		"build": "rollup -c rollup.config.ts",
+		"lint": "eslint *.ts \"+(smtp|test)/*.ts\"",
+		"prepublishOnly": "eslint --fix email.js",
+		"pretest": "yarn build",
+		"test": "ava"
+	},
 	"packageManager": "yarn@1.22.18",
 	"devDependencies": {
 		"@ledge/configs": "23.3.23322",
@@ -43,25 +61,5 @@
 		"typescript": {
 			"optional": true
 		}
-	},
-	"engines": {
-		"node": ">=12"
-	},
-	"files": [
-		"email.js",
-		"email.ts",
-		"smtp"
-	],
-	"types": "./email.ts",
-	"exports": {
-		"default": "./email.js"
-	},
-	"scripts": {
-		"build": "rollup -c rollup.config.ts",
-		"lint": "eslint *.ts \"+(smtp|test)/*.ts\"",
-		"prepublishOnly": "eslint --fix email.js",
-		"pretest": "yarn build",
-		"test": "ava"
-	},
-	"license": "MIT"
+	}
 }
