@@ -1,11 +1,12 @@
 .vscode
 node_modules
 
+*~
 *.ini
 *.log
 *.swp
 *.swo
-*~
+~*
 
 .DS_Store
 package-lock.json
